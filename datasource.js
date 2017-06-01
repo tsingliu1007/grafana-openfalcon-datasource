@@ -148,9 +148,13 @@ System.register(['lodash', 'app/core/utils/datemath'], function(exports_1) {
                 if (date === 'now') {
                     return Math.ceil((new Date).getTime()/1000);
                 }
-                else if(date.match(/(\d+)h/).length != 0){
+                else if(date.match(/(\d+)h/)){
                     var current = Math.ceil((new Date).getTime()/1000);
                     return current - (+date.match(/(\d+)h/)[1] * 60 * 60);
+                }
+                else if(date.match(/(\d+)d/)){
+                    var current = Math.ceil((new Date).getTime()/1000);
+                    return current - (+date.match(/(\d+)d/)[1] * 60 * 60 * 24);
                 }
                 else if (date.indexOf('now-') >= 0 && date.indexOf('/') === -1) {
                     date = date.substring(3);
